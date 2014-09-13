@@ -5,13 +5,26 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<title>IdleGuard</title>
 	<!-- start:bootstrap v3.2.0 -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("css/bootstrap.min.css"); ?>">
 	<!-- start:font awesome v4.1.0 -->
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("css/font-awesome.min.css"); ?>">
     <!-- start:bootstrap reset -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-reset.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("css/bootstrap-reset.css"); ?>">
 	<!-- start:style arjuna -->
-	<link rel="stylesheet" type="text/css" href="css/arjuna.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("css/arjuna.css"); ?>">
+	
+	<!-- start:javascript for all pages -->
+		<!-- start:jquery -->
+		<script src="<?php echo $this->baseUrl("/"); ?>js/jquery-1.11.1.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<!-- start:bootstrap -->
+		<script src="<?php echo $this->baseUrl("/"); ?>js/bootstrap.min.js"></script>
+		<!-- start:arjuna.js -->
+		<script src="<?php echo $this->baseUrl("/"); ?>js/arjuna.js"></script>
+	<!-- end:javascript for all pages-->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  	
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,7 +64,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+                                                    <img src="<?php echo $this->baseUrl("/"); ?>img/avatar3.png" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -63,7 +76,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="<?php echo $this->baseUrl("/"); ?>img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Arjuna Design Team
@@ -75,7 +88,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="<?php echo $this->baseUrl("/"); ?>img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -87,7 +100,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="<?php echo $this->baseUrl("/"); ?>img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -119,7 +132,7 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="img/users/<?php echo $this->user->id; ?>.jpg" class="img-circle img-responsive img-user">
+                                <img src="<?php echo $this->baseUrl("/"); ?>img/users/<?php echo $this->user->id; ?>.jpg" class="img-circle img-responsive img-user">
                                 <strong><?php echo $this->user->title_name; ?></strong>
                             </a>
                             <ul class="dropdown-menu dropdown-login">
@@ -128,7 +141,7 @@
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <p class="text-center">
-                                                    <img src="img/users/<?php echo $this->user->id; ?>.jpg" class="img-responsive img-circle">
+                                                    <img src="<?php echo $this->baseUrl("/"); ?>img/users/<?php echo $this->user->id; ?>.jpg" class="img-responsive img-circle">
                                                 </p>
                                             </div>
                                             <div class="col-lg-9">
@@ -179,7 +192,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="user">
                             <div class="image">
-                                <img src="img/users/<?php echo $this->user->id; ?>.jpg" class="img-circle" alt="User Image" />
+                                <img src="<?php echo $this->baseUrl("/"); ?>img/users/<?php echo $this->user->id; ?>.jpg" class="img-circle" alt="User Image" />
                             </div>
                             <div class="info">
                                 <p><?php echo $this->user->title_name; ?></p>
@@ -227,12 +240,18 @@
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="active">
+                
+                	<?php // current tab
+						$action = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+					?>
+                
+                    <li class="<?php echo ($action == "index") ? "active" : ""; ?>">
+                    
                         <a href="<?php echo $this->baseUrl("/portal"); ?>">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="treeview">
+                    <!-- <li class="treeview">
                         <a href="">
                             <i class="fa fa-cog"></i>
                             <span>Component</span>
@@ -276,21 +295,18 @@
                             <li><a href="jumbotron-thumbnail.html"><i class="fa fa-circle-o"></i> Jumbotron & Thumbnail</a></li>
                             <li><a href="breadcrumb-pagination.html"><i class="fa fa-circle-o"></i> Breadcrumb & Pagination</a></li>
                         </ul>
-                    </li>
-                    <li class="treeview">
+                    </li> 
+                     -->
+                    <li class="treeview <?php echo (in_array($action, array("discharge"))) ? "active" : ""; ?>">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Forms</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="form-component.html"><i class="fa fa-circle-o"></i> Form Component</a></li>
-                            <li><a href="advance-component.html"><i class="fa fa-circle-o"></i> Advance Component</a></li>
-                            <li><a href="form-wizard.html"><i class="fa fa-circle-o"></i> Form Wizard</a></li>
-                            <li><a href="form-validation.html"><i class="fa fa-circle-o"></i> Form Validation</a></li>
-                            <li><a href="dropzone-file-upload.html"><i class="fa fa-circle-o"></i> Dropzone File Upload</a></li>
-                            <li><a href="multiple-file-upload.html"><i class="fa fa-circle-o"></i> Multiple File upload</a></li>
+                            <li><a href="<?php echo $this->baseUrl("/portal/discharge"); ?>"><i class="fa <?php echo ($action == "discharge") ? "fa-circle" : "fa-circle-o"; ?>"></i> Discharge Patient</a></li>
                         </ul>
                     </li>
+                    <!-- 
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-table"></i> <span>Tables</span>
@@ -373,6 +389,7 @@
                             <li><a href="faq.html"><i class="fa fa-circle-o"></i> FAQ</a></li>
                         </ul>
                     </li>
+                     -->
                 </ul>
 
             </section>
@@ -392,14 +409,7 @@
     </div>
     <!-- end:wrapper body -->
 
-	<!-- start:javascript for all pages -->
-		<!-- start:jquery -->
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<!-- start:bootstrap -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- start:arjuna.js -->
-		<script src="js/arjuna.js"></script>
-	<!-- end:javascript for all pages-->
+	
 
 </body>
 </html>

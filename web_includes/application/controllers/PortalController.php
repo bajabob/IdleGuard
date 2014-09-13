@@ -16,5 +16,10 @@ class PortalController extends Zend_Controller_Action
 		
 	}
     
+	
+	public function dischargeAction()
+	{
+		
+	}
     
 }
