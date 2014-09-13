@@ -9,6 +9,18 @@ class IndexController extends Zend_Controller_Action
 		$this->_helper->layout()->setLayout("landing");
 	}
 	
+	public function genpassAction()
+	{
+		$request = $this->getRequest();
+		
+		$email = $request->getParam("email", "none");
+		$pass = $request->getParam("pass", "none");
+		echo $email ."<br>".$pass."<br>";	
+		$sha = new Application_Model_NanoSha256();
+		echo $sha->getSaltedHash($email, $pass);
+		die;
+	}
+	
 	public function indexAction()
 	{
 		$request = $this->getRequest();
@@ -49,6 +61,10 @@ class IndexController extends Zend_Controller_Action
 					
 					if ($sha->getSaltedHash($email, $password) == $user->pass)
 					{
+						$groups = array(99 => "Physician", 
+										59 => "Family Member",
+										10 => "Patient");
+						
 						$authNamespace = new Zend_Session_Namespace('Zend_Auth');
 						$authNamespace->id = $user->id;
 						$authNamespace->email = $user->email;
@@ -57,6 +73,9 @@ class IndexController extends Zend_Controller_Action
 						$authNamespace->account_type = $user->account_type;
 						$authNamespace->name = $user['name_first']." ".$user['name_last'];
 						$authNamespace->title_name = $user->title . " " . $authNamespace->name;
+						$authNamespace->account_type_print = $groups[$user->account_type];
+						$authNamespace->relationship = $user->relationship;
+						
 						return $this->_redirect('/portal');
 					}
 					else
