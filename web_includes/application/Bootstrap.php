@@ -16,7 +16,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         $this->bootstrap('view');
         $this->getResource('view')
-            ->headTitle('Manage.Hoverdog.com')
+            ->headTitle('IdleGuard.com')
             ->setSeparator(' - ');
     }
     

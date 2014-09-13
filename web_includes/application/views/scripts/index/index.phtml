@@ -1,0 +1,18 @@
+<form action="<?php echo $this->baseUrl("/index"); ?>" method="post">
+	<label>
+		<span>Email:</span>
+		<?php if(isset($this->fields["email_error"])):?>
+		<span class="error"><?php echo $this->fields["email_error"];?></span>
+		<?php endif; ?>
+		<input type="text" name="email" value="<?php echo $this->fields["email"];?>">
+	</label>
+	<label>
+		<span>Password:</span>
+		<?php if(isset($this->fields["password_error"])):?>
+		<span class="error"><?php echo $this->fields["password_error"];?></span>
+		<?php endif; ?>
+		<input type="password" name="password">
+	</label>
+	<br>
+	<input type="submit" value="Submit">
+</form>
