@@ -56,6 +56,7 @@ class IndexController extends Zend_Controller_Action
 						$authNamespace->name_last = $user->name_last;
 						$authNamespace->account_type = $user->account_type;
 						$authNamespace->name = $user['name_first']." ".$user['name_last'];
+						$authNamespace->title_name = $user->title . " " . $authNamespace->name;
 						return $this->_redirect('/portal');
 					}
 					else
