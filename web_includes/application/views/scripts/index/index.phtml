@@ -1,18 +1,41 @@
+<div class="body"></div>
+<div class="grad"></div>
+<img src="<?php echo $this->baseUrl("/img/idleguard_logo.png"); ?>" class="logo" />
 <form action="<?php echo $this->baseUrl("/index"); ?>" method="post">
-	<label>
-		<span>Email:</span>
+	<div class="login">
+		<?php if(isset($this->fields["error"])):?>
+			<br><span class="error"><?php echo $this->fields["error"];?></span>
+		<?php endif; ?>
 		<?php if(isset($this->fields["email_error"])):?>
-		<span class="error"><?php echo $this->fields["email_error"];?></span>
+			<br><span class="error"><?php echo $this->fields["email_error"];?></span>
 		<?php endif; ?>
-		<input type="text" name="email" value="<?php echo $this->fields["email"];?>">
-	</label>
-	<label>
-		<span>Password:</span>
+		<input type="text" name="email" placeholder="email" value="<?php echo $this->fields["email"];?>">
 		<?php if(isset($this->fields["password_error"])):?>
-		<span class="error"><?php echo $this->fields["password_error"];?></span>
+			<br><span class="error"><?php echo $this->fields["password_error"];?></span>
 		<?php endif; ?>
-		<input type="password" name="password">
-	</label>
+		<input type="password" placeholder="password" name="password">
 	<br>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Login">
+	</div>
 </form>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		<?php if(!isset($this->fields['has_error'])): ?>
+	  	$(".logo").fadeIn(1500).animate({
+	        	"margin-top": "-100px"
+	    	}, 1500, "swing", function () {
+	       // move_top();//call function to move top
+	    });
+
+	    $(".login").delay(1600).fadeIn(1000);
+
+	    <?php else: ?>
+	    $(".login").show();
+	    $(".logo").show();
+	    $(".logo").css("margin-top", "-100px");
+	    <?php endif;?>
+	});
+</script>
+
+	

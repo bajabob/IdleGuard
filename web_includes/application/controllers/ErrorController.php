@@ -6,7 +6,7 @@ class ErrorController extends Zend_Controller_Action
 	
     public function init()
     {
-    	$this->_helper->layout()->setLayout("hoverdog");
+    	$this->_helper->layout()->setLayout("home");
     }
 	
     public function errorAction()
