@@ -8,9 +8,15 @@ class Application_Model_Alerts extends Zend_Db_Table_Abstract{
 	public function getAll()
 	{
 		$rows = $this->fetchAll(
-				$this->select()
+				$this->select()->where("is_read = 0")
 		);
 		return $rows;
+	}
+	
+	public function markRead($id)
+	{
+		$where = $this->getAdapter()->quoteInto('id = ?', $id);
+		$this->update(array('is_read' => 1), $where);
 	}
 	
 	

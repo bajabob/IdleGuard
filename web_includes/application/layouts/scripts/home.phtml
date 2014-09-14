@@ -140,9 +140,12 @@ function start_meet(access_token) {
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-                                    	<?php foreach($rows as $row): ?>
+                                    	<?php foreach($rows as $row): 
+                                    			if($row->is_read == 1)
+                                    				continue;
+                                    		?>
                                         <li><!-- start message -->
-                                            <a href="<?php echo $this->baseUrl("portal/respond"); ?>">
+                                            <a href="<?php echo $this->baseUrl("portal/respond/id/".$row->id); ?>">
                                                 <div class="pull-left">
                                                     <img src="<?php echo $this->baseUrl("/"); ?>img/users/2.jpg" class="img-circle" alt="User Image"/>
                                                 </div>

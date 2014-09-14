@@ -32,7 +32,7 @@
 		                                        <div class="col-lg-4">
 		                                            <div class="iconic-input">
 		                                                <i class="fa fa-search"></i>
-		                                                <input type="text" id="meds" class="form-control" placeholder="Buspiorne">
+		                                                <input type="text" id="meds" class="form-control" placeholder="Buspirone">
 		                                            </div>
 		                                        </div>
 		                                    </div>
@@ -50,19 +50,19 @@
 		                                        <div class="col-lg-8">
 		                                            <div class="radio">
 		                                                <label>
-		                                                    <input type="radio" name="activity" id="activity" value="Go do more than 30 minutes of exercise!">
+		                                                    <input type="radio" name="activity" id="activity" value="Time for a 30 min exercise!">
 		                                                    High Exercise Recommended - 30 minutes or more of elevated heart rate/day.
 		                                                </label>
 		                                            </div>
 		                                            <div class="radio">
 		                                                <label>
-		                                                    <input type="radio" name="activity" id="activity" value="Go do 15-30 minutes of exercise!">
+		                                                    <input type="radio" name="activity" id="activity" value="Go do a 15-30 min exercise!">
 		                                                    Moderate Exercise Recommended - 15 to 30 minutes of elevated heart rate/day.
 		                                                </label>
 		                                            </div>
 		                                            <div class="radio">
 		                                                <label>
-		                                                    <input type="radio" name="activity" id="activity" value="Go do 5-15 minutes of exercise!">
+		                                                    <input type="radio" name="activity" id="activity" value="Go do a 5-15 min exercise!">
 		                                                    Mild Exercise Recommended - 5 to 15 minutes of elevated heart rate/day.
 		                                                </label>
 		                                            </div>
@@ -128,7 +128,8 @@
 	    //prevent the default submithandling
 	    e.preventDefault();
 	    //send the data of 'this' (the matched form) to yourURL
-	    $.post('<?php echo $this->baseUrl("portal/discharge"); ?>', $(this).serialize());
+	    $.post('<?php echo $this->baseUrl("portal/discharged"); ?>', $(this).serialize());
+	    location.reload();
 	});
 
 
