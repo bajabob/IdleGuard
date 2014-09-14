@@ -14,7 +14,8 @@ class ApiController extends Zend_Controller_Action
     
     public function getactionablesAction()
     {
-    	echo json_encode(array("actionable" => "Hydrate", 
+    	echo json_encode(array(	"status"	=> "1",
+    							"actionable" => "Hydrate", 
     							"icon" => "water", 
     							"message" => "Hi eleni!.",
     							"show_timestamp" => "1410590293",

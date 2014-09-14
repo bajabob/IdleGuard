@@ -19,7 +19,15 @@ class PortalController extends Zend_Controller_Action
 	
 	public function dischargeAction()
 	{
-		
+		$request = $this->getRequest();
+					
+		/**
+		 * a post action has occured, validate data
+		*/
+		if($request->isPost())
+		{
+			Zend_Debug::dump($_POST);die;
+		}
 	}
     
 }
