@@ -34,6 +34,7 @@ class PortalController extends Zend_Controller_Action
 				if(isset($_POST['medication_'.$i]))
 				{
 					$arr = array(
+						'status'		=> 1,
 						'actionable' 	=> "Medication",
 						'icon'			=> 'pill',
 						'message'		=> 'Time to take your '.$_POST['medication_'.$i]."!"
@@ -43,6 +44,7 @@ class PortalController extends Zend_Controller_Action
 			}
 			
 			$arr = array(
+				'status'		=> 1,
 				'actionable' 	=> "Activity",
 				'icon'			=> 'exercise',
 				'message'		=> $_POST['activity']
