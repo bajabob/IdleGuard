@@ -15,7 +15,19 @@ class PortalController extends Zend_Controller_Action
 	{
 		
 	}
+	
+	public function respondAction(){}
     
+	public function respondingAction(){
+    	$act = new Application_Model_Actionables();
+    	$arr = array(
+    			'status'		=> 1,
+    			'actionable' 	=> "Help",
+    			'icon'			=> 'ok',
+    			'message'		=> "Help is on the way!"
+    	);
+    	$act->create(json_encode($arr));
+	}
 	
 	public function dischargeAction()
 	{

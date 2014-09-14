@@ -15,14 +15,11 @@ class ApiController extends Zend_Controller_Action
     
     public function sendalertAction()
     {
-    	$act = new Application_Model_Actionables();
-    	$arr = array(
-    			'status'		=> 1,
-    			'actionable' 	=> "Help",
-    			'icon'			=> 'ok',
-    			'message'		=> "Help is on the way!"
-    	);
-    	$act->create(json_encode($arr));
+    	
+    	$alert = new Application_Model_Alerts();
+    	$alert->create();
+    	
+
     	die;
     }
     
